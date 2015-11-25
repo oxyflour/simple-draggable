@@ -1,0 +1,23 @@
+<!doctype html>
+<html>
+<head>
+</head>
+<body>
+<ul id="list">
+	<li>item 1</li>
+	<li>item 2</li>
+	<li>item 3</li>
+	<li>item 4</li>
+	<li>item 5</li>
+</ul>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="jquery-simple-draggable.js"></script>
+<script>
+$('#list li').on('mousedown', function(e) {
+	$('#list').simpleDraggable(function(index) {
+		console.log(index)
+	})
+})
+</script>
+</body>
+</html>
