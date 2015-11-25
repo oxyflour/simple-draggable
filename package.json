@@ -1,6 +1,6 @@
 {
   "name": "simple-list-draggable",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "obtain position index in the list when dragging ends",
   "main": "jquery-simple-list-draggable.js",
   "scripts": {
