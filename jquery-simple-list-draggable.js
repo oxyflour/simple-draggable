@@ -1,6 +1,6 @@
 +function($) {
 	var INDICATOR_CLASS = 'simple-draggable-indicator',
-		INDICATOR_STYLEID = 'simpleDraggableIndicator',
+		INDICATOR_STYLEID = 'simpleDraggableStyle',
 		INDICATOR_STYLE = [
 			'.' + INDICATOR_CLASS + ' {',
 				'position: absolute;',
@@ -46,5 +46,7 @@
 		}
 
 		$(document).on('mousemove', onMouseMove).on('mouseup', onMouseUp)
+
+		return this
 	}
 }(window.jQuery)

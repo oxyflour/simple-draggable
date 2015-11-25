@@ -1,14 +1,14 @@
 {
-  "name": "simple-draggable",
+  "name": "simple-list-draggable",
   "version": "0.0.1",
-  "description": "call simpleDraggable when mouse is down on list then you can get position index when dragging ends",
-  "main": "jquery-simple-draggable.js",
+  "description": "obtain position index in the list when dragging ends",
+  "main": "jquery-simple-list-draggable.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/oxyflour/simple-draggable.git"
+    "url": "git+https://github.com/oxyflour/simple-list-draggable.git"
   },
   "keywords": [
     "jquery",
@@ -17,7 +17,7 @@
   "author": "oxyflour",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/oxyflour/simple-draggable/issues"
+    "url": "https://github.com/oxyflour/simple-list-draggable/issues"
   },
-  "homepage": "https://github.com/oxyflour/simple-draggable#readme"
+  "homepage": "https://github.com/oxyflour/simple-list-draggable#readme"
 }
