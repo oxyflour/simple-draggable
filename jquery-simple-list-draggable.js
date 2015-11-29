@@ -15,7 +15,7 @@
 			'}',
 		].join('')
 
-	$.fn.simpleDraggable = function(callback) {
+	$.fn.simpleDraggable = function(callback, downEvent) {
 		var list = $(this),
 			indicator = $('<div class="'+INDICATOR_CLASS+'"></div>'),
 			startItem = null
@@ -60,6 +60,8 @@
 		}
 
 		$(document).on('mousemove', onMouseMove).on('mouseup', onMouseUp)
+
+		downEvent && onMouseMove(downEvent)
 
 		return this
 	}
