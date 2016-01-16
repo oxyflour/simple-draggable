@@ -1,16 +1,21 @@
 +function($) {
 	var INDICATOR_CLASS = 'simple-draggable-indicator',
-		STARTITEM_CLASS = 'simple-draggable-start',
-		INDICATOR_STYLEID = 'simpleDraggableStyle',
-		INDICATOR_STYLE = [
+		INDICATOR_SHOWN_CLASS = 'simple-draggable-indicator-shown',
+		STRATITEM_SHOWN_CLASS = 'simple-draggable-start-shown',
+		STARTITEM_SHOWN_DELAY = 200,
+		INDICATOR_STYLE_ID = 'simpleDraggableStyle',
+		INDICATOR_STYLE_CONTENT = [
 			'.' + INDICATOR_CLASS + ' {',
 				'position: absolute;',
 				'width: 100%;',
 				'height: 2px;',
 				'background: #aaa;',
+				'opacity: 0.0;',
+			'}',
+			'.' + INDICATOR_SHOWN_CLASS + ' {',
 				'opacity: 0.5;',
 			'}',
-			'.' + STARTITEM_CLASS + ' {',
+			'.' + STRATITEM_SHOWN_CLASS + ' {',
 				'opacity: 0.5;',
 			'}',
 		].join('')
@@ -20,8 +25,8 @@
 			indicator = $('<div class="'+INDICATOR_CLASS+'"></div>'),
 			startItem = null
 
-		if (!$('#'+INDICATOR_STYLEID).length)
-			$('<style id="'+INDICATOR_STYLEID+'">'+INDICATOR_STYLE+'</style>').prependTo('head')
+		if (!$('#'+INDICATOR_STYLE_ID).length)
+			$('<style id="'+INDICATOR_STYLE_ID+'">'+INDICATOR_STYLE_CONTENT+'</style>').prependTo('head')
 
 		function onMouseMove(e) {
 			var next = null
@@ -39,8 +44,13 @@
 					indicator.remove().appendTo(list)
 			}
 
-			if (next && !startItem)
-				startItem = next.addClass(STARTITEM_CLASS)
+			if (next && !startItem) {
+				startItem = next
+				setTimeout(function() {
+					startItem && startItem.addClass(STRATITEM_SHOWN_CLASS)
+					indicator && indicator.addClass(INDICATOR_SHOWN_CLASS)
+				}, STARTITEM_SHOWN_DELAY)
+			}
 
 			e.preventDefault()
 		}
@@ -48,11 +58,15 @@
 		function onMouseUp(e) {
 			var index = list.children().index(indicator)
 
-			if (indicator.parent().length)
+			if (indicator.parent().length) {
 				indicator.remove()
+				indicator = null
+			}
 			
-			if (startItem)
-				startItem.removeClass(STARTITEM_CLASS)
+			if (startItem) {
+				startItem.removeClass(STRATITEM_SHOWN_CLASS)
+				startItem = null
+			}
 
 			$(document).off('mousemove', onMouseMove).off('mouseup', onMouseUp)
 
